@@ -11,7 +11,12 @@
       "source": [
         "frontend/dist"
       ],
-      "type": "assets"
+      "type": "assets",
+      "build": {
+        "packtool": "npm",
+        "args": "run build",
+        "cwd": "frontend"
+      }
     }
   },
   "defaults": {
