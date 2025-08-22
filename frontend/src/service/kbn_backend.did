@@ -1,0 +1,177 @@
+
+type UserRole = record {
+  user_Prin : principal;
+  role : nat64;
+};
+type PrescriptionDetails = record {
+  "date" : text;
+  patient_id : principal;
+  diagnosis : text;
+  doc_nm : text;
+  additional_notes : text;
+  medicines : text;
+  doctor_id : principal;
+};
+type PharmacistRegistration = record {
+  name : text;
+  email : text;
+  pharmacy_license_number : text;
+  pharmacy_address : text;
+  prin : principal;
+  pharmacy_name : text;
+};
+type PatientRegistration = record {
+  name : text;
+  dob : text;
+  email : text;
+  blood_grp : text;
+  address : text;
+  prin : principal;
+};
+type ODRecipientRegistrations = record {
+  name : text;
+  age : nat64;
+  medicalHistory : text;
+  bloodGroup : text;
+  urgencyLevel : text;
+  reqorgan : text;
+  contact : text;
+  prin : principal;
+};
+type ODRecipientRegistration = record {
+  name : text;
+  age : nat64;
+  medicalHistory : text;
+  bloodGroup : text;
+  urgencyLevel : text;
+  rep_id : int;
+  reqorgan : text;
+  contact : text;
+  prin : principal;
+};
+type ODDonorRegistrations = record {
+  name : text;
+  age : nat64;
+  medicalHistory : text;
+  bloodGroup : text;
+  organ : text;
+  contact : text;
+  prin : principal;
+};
+type ODDonorRegistration = record {
+  name : text;
+  age : nat64;
+  medicalHistory : text;
+  don_id : int;
+  bloodGroup : text;
+  organ : text;
+  contact : text;
+  prin : principal;
+};
+type DoctorRegistration = record {
+  name : text;
+  email : text;
+  role : nat64;
+  specialization : text;
+  prin : principal;
+  years_of_experience : nat64;
+  medical_license_number : text;
+};
+type DonorRegistrations = record {
+  name : text;
+  age : nat64;
+  medicalHistory : text;
+  bloodGroup : text;
+  weight : text;
+  lastDonationDate : text;
+  contact : text;
+  prin : principal;
+};
+type DonorRegistration = record {
+  name : text;
+  age : nat64;
+  medicalHistory : text;
+  don_id : int;
+  bloodGroup : text;
+  weight : text;
+  lastDonationDate : text;
+  contact : text;
+  prin : principal;
+};
+type doc_details = record {
+  name : text;
+  age : nat64;
+  dob : text;
+  specialization : text;
+  prin : principal;
+  licenseNumber : text;
+};
+type RecipientRegistrations = record {
+  name : text;
+  age : nat64;
+  reqbloodGroup : text;
+  urgencyLevel : text;
+  hospitalName : text;
+  reasonForReq : text;
+  contact : text;
+  prin : principal;
+  units : nat64;
+};
+type RecipientRegistration = record {
+  name : text;
+  age : nat64;
+  reqbloodGroup : text;
+  urgencyLevel : text;
+  hospitalName : text;
+  reasonForReq : text;
+  rep_id : int;
+  contact : text;
+  prin : principal;
+  units : nat64;
+};
+type record_vaccination = record {
+  user_id : principal;
+  next_dose : text;
+  "date" : text;
+  vaccine_nm : text;
+  doctor_id : principal;
+  batch_number : text;
+};
+service : {
+  DeleteUserRole : () -> (text);
+  Delete_Doctors_Registrations : () -> (text);
+  GetUserRole : (UserRole) -> (text);
+  Patient_Registration_function : (PatientRegistration) -> (text);
+  Prescription : (PrescriptionDetails) -> (text);
+  SetDoctor : (DoctorRegistration) -> (text);
+  getDoctordet : (principal) -> (opt DoctorRegistration) query;
+  getDoctorNm : (principal) -> (text) query;
+  getPatientDetails : (principal) -> (opt PatientRegistration) query;
+  getPharmacistRegistartion : (PharmacistRegistration) -> (text);
+  getPharmacistdetails : (principal) -> (opt PharmacistRegistration) query;
+  getPresecriptions : (principal) -> (vec PrescriptionDetails) query;
+  getUserRole : (principal) -> (nat64) query;
+  get_Donor_Registrations : (principal) -> (vec DonorRegistration) query;
+  get_Donor_RegistrationsOD : (principal) -> (vec ODDonorRegistration) query;
+  get_Donors_size : () -> (nat) query;
+  get_Donors_sizeOD : () -> (nat) query;
+  get_Recipient_Registration : (principal) -> (vec RecipientRegistration) query;
+  get_Recipient_RegistrationOD : (principal) -> (vec ODRecipientRegistration) query;
+  get_Recipient_size : () -> (nat) query;
+  get_Recipient_sizeOD : () -> (nat) query;
+  get_all_Donors : () -> (vec DonorRegistration) query;
+  get_all_DonorsOD : () -> (vec ODDonorRegistration) query;
+  get_all_Recipient : () -> (vec RecipientRegistration) query;
+  get_all_RecipientOD : () -> (vec ODRecipientRegistration) query;
+  get_doc_details : (principal) -> (int) query;
+  get_vaccine_data : () -> (vec record_vaccination) query;
+  get_vaccine_data_by_principal : (principal) -> (vec record_vaccination) query;
+  getdate : (principal) -> (text) query;
+  reg_doc : (doc_details) -> (text);
+  remove_doctors : () -> (text);
+  set_Donor_registration : (DonorRegistrations) -> (text);
+  set_Donor_registrationOD : (ODDonorRegistrations) -> (text);
+  set_Recipient_registration : (RecipientRegistrations) -> (text);
+  set_Recipient_registrationOD : (ODRecipientRegistrations) -> (text);
+  set_record_vaccine : (record_vaccination) -> (text);
+}

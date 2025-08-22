@@ -1,0 +1,5 @@
+{
+  "kbn_backend": {
+    "ic": "YOUR_KBN_BACKEND_CANISTER_ID"
+  }
+}

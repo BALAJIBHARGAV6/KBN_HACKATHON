@@ -3,6 +3,15 @@
     "kbn_backend": {
       "main": "src/kbn_backend/main.mo",
       "type": "motoko"
+    },
+    "frontend": {
+      "dependencies": [
+        "kbn_backend"
+      ],
+      "source": [
+        "frontend/dist"
+      ],
+      "type": "assets"
     }
   },
   "defaults": {
